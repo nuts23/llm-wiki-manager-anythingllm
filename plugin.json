@@ -1,0 +1,44 @@
+{
+  "schema": "skill-1.0.0",
+  "version": "1.0.0",
+  "active": true,
+  "name": "LLM Wiki Manager",
+  "hubId": "llm-wiki-manager",
+  "description": "Manage a persistent, compounding markdown wiki using the llm-wiki-manager pattern. Use this tool to run the core Python scripts: init_wiki.py (bootstrap wiki), append_log.py (append to log.md), update_index.py (upsert index.md entries), and lint_wiki.py (health check).",
+  "author": "sametbrr (Ported to AnythingLLM)",
+  "author_url": "https://github.com/sametbrr/llm-wiki-manager",
+  "setup_args": {
+    "PYTHON_BIN": {
+      "type": "string",
+      "required": false,
+      "input": {
+        "type": "text",
+        "default": "python",
+        "hint": "Python executable to use (e.g., python, python3)"
+      }
+    }
+  },
+"entrypoint": {
+    "file": "handler.js",
+    "params": {
+      "script_name": {
+        "type": "string",
+        "description": "The exact name of the Python script to execute (e.g. 'init_wiki.py', 'lint_wiki.py', 'append_log.py', 'update_index.py')."
+      },
+      "arguments_string": {
+        "type": "string",
+        "description": "The command line arguments to pass to the script, formatted as a single space-separated string. Leave empty if no arguments are needed."
+      }
+    }
+  },
+  "examples": [
+    {
+      "prompt": "Bootstrap a new LLM wiki in the current directory.",
+      "call": "{\"script_name\": \"init_wiki.py\", \"arguments_string\": \"\"}"
+    },
+    {
+      "prompt": "Run a health check on the wiki and output to stdout.",
+      "call": "{\"script_name\": \"lint_wiki.py\", \"arguments_string\": \"--stdout\"}"
+    }
+  ]
+}
