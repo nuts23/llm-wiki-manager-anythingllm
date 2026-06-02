@@ -3,6 +3,7 @@
 [![Agent Skills](https://img.shields.io/badge/agentskills.io-compatible-blue)](https://agentskills.io)
 
 # LLM Wiki Manager
+This has been adapted to work as an AnythingLLM skill without changing the original Claude Code skill code.
 
 A Claude Code skill for building and maintaining a personal LLM-managed wiki — a persistent, compounding knowledge base where the LLM does all the writing, cross-referencing, and bookkeeping while you curate sources and ask questions.
 
